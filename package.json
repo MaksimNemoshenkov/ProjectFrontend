@@ -36,6 +36,7 @@
     "ngx-auto-unsubscribe": "^3.0.1",
     "ngx-dropzone": "^3.0.0",
     "ngx-infinite-scroll": "^10.0.1",
+    "or": "^0.2.0",
     "path": "^0.12.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
