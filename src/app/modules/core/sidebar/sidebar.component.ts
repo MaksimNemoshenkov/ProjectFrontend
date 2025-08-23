@@ -19,20 +19,20 @@ export class SidebarComponent {
                             {name: "Friends", link: "/user/friends", icon: "team"},
                             {name: "Cocktails", link: "/dishes", icon: "coffee"},
                             {name: "Favourites", link: "/user/favourite", icon: "heart"},
-                            {name: "Settings", link: "/settings", icon: "setting"}
+
     ]);
     // @ts-ignore
     this.links.set("MODERATOR", [{name: "Cocktails", link: "/moderator/cocktails", icon: "coffee"},
                                  {name: "Ingredients", link: "/moderator/ingredients", icon: "apple"},
                                  {name: "Kitchenware", link: "/moderator/kitchenware", icon: "experiment"},
-                                 {name: "Settings", link: "/settings", icon: "setting"}
+
     ]);
     // @ts-ignore
     this.links.set("ADMIN", [{name: "Cocktails", link: "/moderator/cocktails", icon: "coffee"},
                              {name: "Ingredients", link: "/moderator/ingredients", icon: "apple"},
                              {name: "Kitchenware", link: "/moderator/kitchenware", icon: "experiment"},
                              {name: "Moderators", link: "/admin/moderators", icon: "audit"},
-                             {name: "Settings", link: "/settings", icon: "setting"}
+
     ])
   }
 

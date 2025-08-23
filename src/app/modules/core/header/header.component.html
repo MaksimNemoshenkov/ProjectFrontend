@@ -1,30 +1,76 @@
 <div class="header">
-  <!--<app-user-search></app-user-search>-->
+  <div class="header-container">
+    <!-- Логотип и название -->
+    <div class="header-left">
+      <a routerLink="/dishes" class="brand-name">FreshApp</a>
+    </div>
 
-  <div class="align floatLeft">
-    <span class="brandName">Fresh App</span>
-  </div>
+    <!-- Центральная часть с поиском -->
+    <div class="header-center">
+      <div class="search-container">
+        <i class="search-icon" nz-icon nzType="search" nzTheme="outline"></i>
+        <input 
+          type="text" 
+          placeholder="Search..." 
+          class="search-input"
+          #search 
+          (keyup)="upSearch(search.value)"
+        >
+      </div>
+      <div class="filter-dropdown">
+        <span class="filter-label">All</span>
+        <i class="dropdown-icon" nz-icon nzType="down" nzTheme="outline"></i>
+      </div>
+    </div>
 
-  <div class="align floatRight" *ngIf="userType !== null && userType !== ''; else unauthorizedDiv">
-    <i class="name">{{this.firstname}}<br>{{this.lastname}}</i>
+    <!-- Правая часть с уведомлениями, темной темой и профилем -->
+    <div class="header-right" *ngIf="userType !== null && userType !== ''; else unauthorizedDiv">
+      <!-- Уведомления -->
+      <div class="notifications">
+        <i class="notification-icon" nz-icon nzType="bell" nzTheme="outline"></i>
+        <span class="notification-dot"></span>
+      </div>
 
-    <advanced-image class="avatar" [cldImg]="img"></advanced-image>
+      <!-- Переключатель темной темы -->
+      <div class="theme-toggle" (click)="toggleTheme()">
+        <i class="theme-icon" nz-icon [nzType]="isDarkMode ? 'sun' : 'moon'" nzTheme="outline"></i>
+        <span class="theme-text">{{isDarkMode ? 'Light' : 'Dark'}}</span>
+        <span class="debug-info">({{isDarkMode}})</span>
+      </div>
 
-    <button class="buttonLogout" (click)="logOut()">
-      Log out
-      <i class="logOutIcon" nz-icon nzType="logout" nzTheme="outline"></i>
-    </button>
-  </div>
+      <!-- Профиль пользователя -->
+      <div class="user-profile">
+        <div class="user-info">
+          <span class="user-name">{{this.firstname}}</span>
+          <span class="user-nickname">{{this.lastname}}</span>
+        </div>
+        <advanced-image class="avatar" [cldImg]="img"></advanced-image>
+      </div>
 
-  <ng-template #unauthorizedDiv>
-    <div class="align floatRight">
-      <button class="buttonLogout" (click)="goToSignUp()">
-        Sign up
-      </button>
-      <button class="buttonLogout" (click)="goToLogIn()">
-        Log in
+      <!-- Кнопка выхода -->
+      <button class="logout-button" (click)="logOut()">
+        <span class="logout-text">Logout</span>
+        <i class="logout-icon" nz-icon nzType="logout" nzTheme="outline"></i>
       </button>
     </div>
-  </ng-template>
 
+    <!-- Шаблон для неавторизованных пользователей -->
+    <ng-template #unauthorizedDiv>
+      <div class="header-right">
+        <!-- Переключатель темной темы -->
+        <div class="theme-toggle" (click)="toggleTheme()">
+          <i class="theme-icon" nz-icon [nzType]="isDarkMode ? 'sun' : 'moon'" nzTheme="outline"></i>
+          <span class="theme-text">{{isDarkMode ? 'Light' : 'Dark'}}</span>
+          <span class="debug-info">({{isDarkMode}})</span>
+        </div>
+        
+        <button class="auth-button signup-button" (click)="goToSignUp()">
+          Sign up
+        </button>
+        <button class="auth-button login-button" (click)="goToLogIn()">
+          Log in
+        </button>
+      </div>
+    </ng-template>
+  </div>
 </div>

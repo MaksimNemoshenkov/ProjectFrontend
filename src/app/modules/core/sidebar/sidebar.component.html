@@ -1,16 +1,63 @@
 <div class="navigation">
-  <ul>
-    <li>
-      <span class="nameSpan">Navigation</span>
-    </li>
-    <br>
+  <nav class="nav-menu">
+    <!-- Основная навигация -->
+    <div class="nav-section">
+      <h3 class="nav-title">Main</h3>
+      <ul class="nav-list">
+        <li *ngFor="let link of links.get(userType)">
+          <a routerLink="{{link.link}}" routerLinkActive="active">
+            <span class="nav-icon">
+              <i nz-icon nzType="{{link.icon}}" nzTheme="outline"></i>
+            </span>
+            <span class="nav-text">{{link.name}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
 
-    <li *ngFor="let link of links.get(userType)">
-      <a routerLink="{{link.link}}">
-        <span class="icon"><i nz-icon nzType="{{link.icon}}" nzTheme="outline"></i></span>
-        <span class="title">{{link.name}}</span>
-      </a>
-    </li>
+    <!-- Дополнительные разделы -->
+    <div class="nav-section">
+      <h3 class="nav-title">Social</h3>
+      <ul class="nav-list">
+        <li>
+          <a routerLink="/blog" routerLinkActive="active">
+            <span class="nav-icon">
+              <i nz-icon nzType="file-text" nzTheme="outline"></i>
+            </span>
+            <span class="nav-text">Blog</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/events" routerLinkActive="active">
+            <span class="nav-icon">
+              <i nz-icon nzType="star" nzTheme="outline"></i>
+            </span>
+            <span class="nav-text">Events</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/calendar" routerLinkActive="active">
+            <span class="nav-icon">
+              <i nz-icon nzType="calendar" nzTheme="outline"></i>
+            </span>
+            <span class="nav-text">Calendar</span>
+          </a>
+        </li>
+      </ul>
+    </div>
 
-  </ul>
+    <!-- Настройки -->
+    <div class="nav-section">
+      <ul class="nav-list">
+        <li>
+          <a routerLink="/settings" routerLinkActive="active">
+            <span class="nav-icon">
+              <i nz-icon nzType="setting" nzTheme="outline"></i>
+            </span>
+            <span class="nav-text">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </div>

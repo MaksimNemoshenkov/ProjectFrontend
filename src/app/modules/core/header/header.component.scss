@@ -3,50 +3,515 @@
 .header {
   position: fixed;
   width: 100%;
-  height: 10%;
-  right: 0%;
-  top: 0%;
+  height: 70px;
+  top: 0;
+  left: 0;
+  background: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-bottom: 1px solid #E8E8E8;
+  transition: all 0.3s ease;
+  
+  &.dark-theme {
+    background: #1a1a1a;
+    border-bottom-color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
 }
 
-.align {
+.header-container {
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.floatLeft {
-  z-index: 10;
-  float: left;
-  justify-content: flex-start;
-  margin-left: 2%;
+// Левая часть - логотип
+.header-left {
+  flex-shrink: 0;
+  
+  .brand-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #484643;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: #666;
+      transform: scale(1.05);
+    }
+  }
 }
 
-.floatRight {
-  float: right;
-  justify-content: flex-end;
+// Центральная часть - поиск и фильтры
+.header-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 48px;
+  
+  .search-container {
+    position: relative;
+    width: 400px;
+    
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 16px;
+    }
+    
+    .search-input {
+      width: 100%;
+      height: 40px;
+      padding: 0 16px 0 48px;
+      border: 2px solid #E8E8E8;
+      border-radius: 20px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      background: #FAFAFA;
+      
+      &:focus {
+        outline: none;
+        border-color: #484643;
+        background: #FFFFFF;
+        box-shadow: 0 0 0 3px rgba(72, 70, 67, 0.1);
+      }
+      
+      &::placeholder {
+        color: #999;
+      }
+    }
+  }
+  
+  .filter-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 2px solid #E8E8E8;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #FAFAFA;
+    
+    &:hover {
+      border-color: #484643;
+      background: #FFFFFF;
+    }
+    
+    .filter-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #666;
+    }
+    
+    .dropdown-icon {
+      color: #999;
+      font-size: 12px;
+    }
+  }
 }
 
-.brandName {
-  font-family: Montserrat;
-  font-weight: 700;
-  font-size: 3em;
-  color: rgba(72, 70, 67, 0.89);
+// Правая часть - уведомления, тема, профиль, кнопки
+.header-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  
+  .notifications {
+    position: relative;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: #F5F5F5;
+    }
+    
+    .notification-icon {
+      font-size: 20px;
+      color: #666;
+    }
+    
+    .notification-dot {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 8px;
+      height: 8px;
+      background: #FF4757;
+      border-radius: 50%;
+      border: 2px solid #FFFFFF;
+    }
+  }
+  
+  .theme-toggle {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    
+    &:hover {
+      background: #F5F5F5;
+      transform: scale(1.05);
+      border-color: #484643;
+    }
+    
+    .theme-icon {
+      font-size: 18px;
+      color: #666;
+    }
+    
+    .theme-text {
+      font-size: 12px;
+      font-weight: 500;
+      color: #666;
+      white-space: nowrap;
+    }
+    
+    .debug-info {
+      font-size: 10px;
+      color: #999;
+      font-style: italic;
+    }
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &:hover {
+      background: #F5F5F5;
+    }
+    
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      
+      .user-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+        line-height: 1.2;
+      }
+      
+      .user-nickname {
+        font-size: 12px;
+        color: #666;
+        line-height: 1.2;
+      }
+    }
+    
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  
+  .logout-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #FF4757;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: #FF3742;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
+    }
+    
+    .logout-text {
+      font-size: 14px;
+    }
+    
+    .logout-icon {
+      font-size: 16px;
+    }
+  }
+  
+  .auth-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &.signup-button {
+      background: #484643;
+      color: white;
+      
+      &:hover {
+        background: #666;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(72, 70, 67, 0.3);
+      }
+    }
+    
+    &.login-button {
+      background: transparent;
+      color: #484643;
+      border: 2px solid #484643;
+      
+      &:hover {
+        background: #484643;
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(72, 70, 67, 0.3);
+      }
+    }
+  }
 }
 
-.buttonLogout {
-  margin-right: 7%;
-  width: 175px;
+// Темная тема
+.dark-theme {
+  .header {
+    background: #1a1a1a;
+    border-bottom-color: #333;
+    
+    .brand-name {
+      color: #ffffff;
+      
+      &:hover {
+        color: #cccccc;
+      }
+    }
+    
+    .search-input {
+      background: #2a2a2a;
+      border-color: #444;
+      color: #ffffff;
+      
+      &:focus {
+        border-color: #666;
+        background: #333;
+      }
+      
+      &::placeholder {
+        color: #888;
+      }
+    }
+    
+    .filter-dropdown {
+      background: #2a2a2a;
+      border-color: #444;
+      color: #ffffff;
+      
+      &:hover {
+        background: #333;
+        border-color: #666;
+      }
+      
+      .filter-label {
+        color: #cccccc;
+      }
+      
+      .dropdown-icon {
+        color: #888;
+      }
+    }
+    
+    .notifications:hover,
+    .theme-toggle:hover,
+    .user-profile:hover {
+      background: #333;
+    }
+    
+    .theme-toggle {
+      background: #333;
+      border-color: #555;
+      
+      &:hover {
+        background: #444;
+        border-color: #666;
+      }
+      
+      .theme-icon,
+      .theme-text {
+        color: #cccccc;
+      }
+      
+      .debug-info {
+        color: #888;
+      }
+    }
+    
+    .notification-icon,
+    .theme-icon {
+      color: #cccccc;
+    }
+    
+    .theme-text {
+      color: #cccccc;
+    }
+    
+    .user-name {
+      color: #ffffff;
+    }
+    
+    .user-nickname {
+      color: #cccccc;
+    }
+  }
 }
 
-.logOutIcon {
-  margin-left: 5%;
+// Мобильная адаптация
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 16px;
+  }
+  
+  .header-center {
+    margin: 0 24px;
+    
+    .search-container {
+      width: 300px;
+    }
+  }
 }
 
-.avatar {
-  margin-right: 7%;
+@media (max-width: 768px) {
+  .header {
+    height: 60px;
+  }
+  
+  .header-container {
+    padding: 0 12px;
+  }
+  
+  .header-left .brand-name {
+    font-size: 20px;
+  }
+  
+  .header-center {
+    margin: 0 16px;
+    
+    .search-container {
+      width: 200px;
+      
+      .search-input {
+        height: 36px;
+        font-size: 13px;
+      }
+    }
+    
+    .filter-dropdown {
+      padding: 6px 12px;
+      
+      .filter-label {
+        font-size: 13px;
+      }
+    }
+  }
+  
+  .header-right {
+    gap: 16px;
+    
+    .user-profile {
+      padding: 6px 12px;
+      
+      .user-info {
+        display: none;
+      }
+      
+      .avatar {
+        width: 36px;
+        height: 36px;
+      }
+    }
+    
+    .logout-button,
+    .auth-button {
+      padding: 8px 16px;
+      font-size: 13px;
+    }
+  }
 }
 
-.name {
-  text-align: right;
-  margin-right: 7%;
+@media (max-width: 480px) {
+  .header-center {
+    margin: 0 8px;
+    
+    .search-container {
+      width: 150px;
+      
+      .search-input {
+        height: 32px;
+        font-size: 12px;
+        padding: 0 12px 0 36px;
+      }
+      
+      .search-icon {
+        left: 12px;
+        font-size: 14px;
+      }
+    }
+    
+    .filter-dropdown {
+      display: none;
+    }
+  }
+  
+  .header-right {
+    gap: 12px;
+    
+    .notifications,
+    .theme-toggle {
+      padding: 6px;
+      
+      .notification-icon,
+      .theme-icon {
+        font-size: 18px;
+      }
+    }
+    
+    .theme-toggle {
+      padding: 6px 10px;
+      
+      .theme-text {
+        font-size: 11px;
+      }
+    }
+    
+    .logout-button,
+    .auth-button {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  }
 }
