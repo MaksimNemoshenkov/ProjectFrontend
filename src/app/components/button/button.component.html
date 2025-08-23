@@ -1,8 +1,21 @@
 <button
-  [ngStyle]="{ 'background-color': color }"
-  class="btn"
+  *ngIf="!routerLink"
+  [type]="buttonType"
+  [class]="buttonClasses"
+  [style]="buttonStyles"
+  [disabled]="disabled"
   (click)="onClick()"
 >
-  {{text}}
+  {{ text }}
 </button>
+
+<a
+  *ngIf="routerLink"
+  [routerLink]="routerLink"
+  [class]="buttonClasses"
+  [style]="buttonStyles"
+  (click)="onClick()"
+>
+  {{ text }}
+</a>
 

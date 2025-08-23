@@ -5,6 +5,9 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, #5F72BE 0%, #EBD3FB 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .picture{
@@ -13,60 +16,110 @@
   position: absolute;
   right: -2%;
   top: 0%;
+  z-index: 1;
 }
 
 .inner {
-  position: absolute;
-  top: 20%;
-  left: 10%;
   background: #FFFFFF;
-  border-radius: 3vmin;
-  width: 30%;
-  height: 60%;
+  border-radius: 24px;
+  width: 400px;
+  min-height: 500px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 10;
 }
 
 .picture img{
   height: 100%;
   width: 100%;
   margin: 0;
+  object-fit: cover;
 }
+
 :host {
   display: block;
 }
+
 h1{
   color: #495464;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
 }
+
 .login-page {
 
   &__form {
-    padding-top: 10%;
-    width: 70%;
+    padding: 3rem 0;
+    width: 80%;
     margin: 0 auto;
     text-align: center;
   }
 
   &__input {
-    margin-top: 16px;
-    border: 2px solid #BBBFCA;
+    margin-top: 1.5rem;
+    border: 2px solid #E8E8E8;
     box-sizing: border-box;
-    border-radius: 24px;
-    margin-bottom: 5%;
-  }
-
-  &__controller {
-    border: none;
-    margin-top: 16px;
-    position: relative;
-    background: #9921E8;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 0px 24px rgba(153, 33, 232, 0.5);
-    border-radius: 50px;
-    width: 60%;
-    margin-bottom: 5%;
-    height: 40px;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    padding: 16px 20px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    width: 100%;
+    
+    &:focus {
+      border-color: #9921E8;
+      box-shadow: 0 0 0 3px rgba(153, 33, 232, 0.1);
+      outline: none;
+    }
+    
+    &:hover {
+      border-color: #BBBFCA;
+    }
+    
+    &::placeholder {
+      color: #999;
+    }
   }
 
   &__link {
-    margin-top: 16px;
+    margin-top: 2rem;
+    
+    a {
+      display: block;
+      color: #666;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      transition: color 0.3s ease;
+      font-size: 14px;
+      
+      &:hover {
+        color: #9921E8;
+      }
+    }
+  }
+}
+
+.message-container {
+  margin: 1rem 0;
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 768px) {
+  .inner {
+    width: 90%;
+    margin: 0 20px;
+  }
+  
+  .picture {
+    display: none;
+  }
+  
+  h1 {
+    font-size: 2rem;
   }
 }
 

@@ -1,41 +1,50 @@
 <div class="recovery">
   <div class="picture">
-    <img src="assets/kitchen.png">
+    <img src="assets/kitchen.png" alt="Kitchen background">
   </div>
+  
   <div class="inner">
-
     <div class="recovery-page__form" [formGroup]="form">
-      <h1>Forgot your password?</h1>
+      <h1>Reset Password</h1>
+      <p class="recovery-page__description">
+        Enter your email address and we'll send you a link to reset your password.
+      </p>
+      
       <nz-form-control
-        [nzValidateStatus]="form.controls.email.touched && form.controls.email.errors ? 'error' : ''  "
-        nzErrorTip="Enter valid email"
+        [nzValidateStatus]="form.controls.email.touched && form.controls.email.errors ? 'error' : ''"
+        nzErrorTip="Please enter a valid email address"
       >
         <input
           class="recovery-page__input"
           nz-input
-          placeholder="E-mail"
+          placeholder="Email address"
           formControlName="email"
+          type="email"
         />
       </nz-form-control>
 
-      <button
-        class="recovery-page__controller"
-        nz-button
-        nzType="primary"
-        (click)="onRecoveryClick()"
-      >
-        Send link to email
-      </button>
-      <p *ngIf="error">
-        <nz-alert nzType="error" nzMessage="{{message}}" nzShowIcon></nz-alert>
-      </p>
-      <p *ngIf="success">
-        <nz-alert nzType="success" nzMessage="{{message}}" nzShowIcon></nz-alert>
-      </p>
+      <app-button
+        text="Send Reset Link"
+        type="primary"
+        size="large"
+        [fullWidth]="true"
+        [disabled]="!form.valid"
+        (clicked)="onRecoveryClick()"
+      ></app-button>
+      
+      <!-- Error and success messages -->
+      <div *ngIf="error" class="message-container">
+        <nz-alert nzType="error" [nzMessage]="message" nzShowIcon></nz-alert>
+      </div>
+      <div *ngIf="success" class="message-container">
+        <nz-alert nzType="success" [nzMessage]="message" nzShowIcon></nz-alert>
+      </div>
+      
+      <!-- Navigation links -->
       <div class="recovery-page__link">
-        <a routerLink="/login">Log in</a><br>
-        <a routerLink="/signup">Sign up</a><br>
-        <a routerLink="/">Go to main page</a><br>
+        <p>Remember your password? <a routerLink="/login">Sign in</a></p>
+        <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
+        <p><a routerLink="/">Back to home</a></p>
       </div>
     </div>
   </div>

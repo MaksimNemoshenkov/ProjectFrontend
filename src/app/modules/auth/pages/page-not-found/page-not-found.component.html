@@ -1,0 +1,22 @@
+<div class="page-not-found">
+  <div class="picture">
+    <img src="assets/kitchen.png" alt="Kitchen background">
+  </div>
+  
+  <div class="page-not-found__container">
+    <div class="page-not-found__icon">🚫</div>
+    <h1 class="page-not-found__title">404</h1>
+    <h2 class="page-not-found__subtitle">Page Not Found</h2>
+    <p class="page-not-found__description">
+      Oops! The page you're looking for doesn't exist. 
+      It might have been moved, deleted, or you entered the wrong URL.
+    </p>
+    <app-button
+      text="Back to Home"
+      type="primary"
+      size="large"
+      routerLink="/"
+      (clicked)="onButtonClick()"
+    ></app-button>
+  </div>
+</div>

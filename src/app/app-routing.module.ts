@@ -16,7 +16,7 @@ import {AddEditDishComponent} from "./modules/cocktails/add-edit-dish/add-edit-d
 import {PersonalStockComponent} from "./modules/cocktails/personal-stock/personal-stock.component";
 import {DishInfoComponent} from "./modules/cocktails/dish/dish-info/dish-info.component";
 import {ListKitchenwareComponent} from "./modules/cocktails/list-kitchenware/list-kitchenware.component";
-import {PageNotFoundComponent} from "./modules/core/page-not-found/page-not-found.component";
+import {PageNotFoundComponent} from "./modules/auth/pages/page-not-found/page-not-found.component";
 import {FriendsComponent} from "./modules/friends/pages/friends/friends.component";
 import {RequestsComponent} from "./modules/friends/pages/friends-requests/requests.component";
 import {UserSearchComponent} from "./modules/user/components/searchUser/user-search.component";

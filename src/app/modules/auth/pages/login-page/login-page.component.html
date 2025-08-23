@@ -1,29 +1,28 @@
 <div class="login">
   <div class="picture">
-    <img src="assets/kitchen.png">
+    <img src="assets/kitchen.png" alt="Kitchen background">
   </div>
 
   <div class="inner">
-
-    <div
-      class="login-page__form"
-      [formGroup]="form"
-    >
-      <h1>Login</h1>
+    <div class="login-page__form" [formGroup]="form">
+      <h1>Welcome Back</h1>
+      
       <nz-form-control
-        [nzValidateStatus]="form.controls.username.touched && form.controls.username.errors ? 'error' : ' ' "
-        nzErrorTip="email error"
+        [nzValidateStatus]="form.controls.username.touched && form.controls.username.errors ? 'error' : ''"
+        nzErrorTip="Please enter a valid email address"
       >
         <input
           class="login-page__input"
           nz-input
-          placeholder="E-mail"
+          placeholder="Email address"
           formControlName="username"
+          type="email"
         />
       </nz-form-control>
+      
       <nz-form-control
-        [nzValidateStatus]="form.controls.password.touched &&  form.controls.password.errors ? 'error' : ' ' "
-        nzErrorTip="password error"
+        [nzValidateStatus]="form.controls.password.touched && form.controls.password.errors ? 'error' : ''"
+        nzErrorTip="Please enter your password"
       >
         <input
           class="login-page__input"
@@ -35,24 +34,28 @@
         />
       </nz-form-control>
 
-      <button
-        class="login-page__controller"
-        nz-button
-        nzType="primary"
-        (click)="onLoginClick()"
-      >
-        Login
-      </button>
+      <app-button
+        text="Sign In"
+        type="primary"
+        size="large"
+        [fullWidth]="true"
+        [disabled]="!form.valid"
+        (clicked)="onLoginClick()"
+      ></app-button>
+      
+      <!-- Error and success messages -->
+      <div *ngIf="error" class="message-container">
+        <nz-alert nzType="error" [nzMessage]="message" nzShowIcon></nz-alert>
+      </div>
+      <div *ngIf="success" class="message-container">
+        <nz-alert nzType="success" [nzMessage]="message" nzShowIcon></nz-alert>
+      </div>
+      
+      <!-- Navigation links -->
       <div class="login-page__link">
-        <a routerLink="/recovery">Forgot password?</a><br>
-        <a routerLink="/signup">Don’t have an account?</a><br>
-        <a routerLink="/">Go to main page</a><br>
-        <p *ngIf="error">
-          <nz-alert nzType="error" nzMessage="{{message}}" nzShowIcon></nz-alert>
-        </p>
-        <p *ngIf="success">
-          <nz-alert nzType="success" nzMessage="{{message}}" nzShowIcon></nz-alert>
-        </p>
+        <p><a routerLink="/recovery">Forgot your password?</a></p>
+        <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
+        <p><a routerLink="/">Back to home</a></p>
       </div>
     </div>
   </div>

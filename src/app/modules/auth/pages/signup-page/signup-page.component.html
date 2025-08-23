@@ -1,9 +1,10 @@
 <div class="signup">
   <div class="picture">
-    <img src="assets/kitchen.png">
+    <img src="assets/kitchen.png" alt="Kitchen background">
   </div>
+  
   <div class="inner">
-
+    <!-- Modal overlay for email confirmation -->
     <div [ngClass]="{'fixed-overlay': toggle, 'fixed': !toggle}" class="fixed-overlay">
       <div class="modal">
         <div class="popup">
@@ -14,36 +15,43 @@
         </div>
       </div>
     </div>
-    <div
-      class="signup-page__form"
-      [formGroup]="form"
-    ><h1>Sign up</h1>
+    
+    <!-- Main signup form -->
+    <div class="signup-page__form" [formGroup]="form">
+      <h1>Create Account</h1>
+      
       <nz-form-control
-        [nzValidateStatus]="form.controls.email.touched &&  form.controls.email.errors ? 'error' : ''  "
-        nzErrorTip="email error"
+        [nzValidateStatus]="form.controls.email.touched && form.controls.email.errors ? 'error' : ''"
+        nzErrorTip="Please enter a valid email address"
       >
         <input
           class="signup-page__input"
           nz-input
-          placeholder="E-mail"
+          placeholder="Email address"
           formControlName="email"
+          type="email"
         />
       </nz-form-control>
+      
       <input
         class="signup-page__input"
         nz-input
         placeholder="First Name"
         formControlName="firstname"
+        type="text"
       />
+      
       <input
         class="signup-page__input"
         nz-input
         placeholder="Last Name"
         formControlName="lastname"
+        type="text"
       />
+      
       <nz-form-control
-        [nzValidateStatus]="form.controls.password.touched &&  form.controls.password.errors ? 'error' : ''  "
-        nzErrorTip="password must be more then 8 characters"
+        [nzValidateStatus]="form.controls.password.touched && form.controls.password.errors ? 'error' : ''"
+        nzErrorTip="Password must be at least 8 characters long"
       >
         <input
           class="signup-page__input"
@@ -53,9 +61,10 @@
           formControlName="password"
         />
       </nz-form-control>
+      
       <nz-form-control
-        [nzValidateStatus]="form.controls.confirmPassword.touched &&  form.controls.confirmPassword.errors ? 'error' : ''  "
-        nzErrorTip="confirm password must match"
+        [nzValidateStatus]="form.controls.confirmPassword.touched && form.controls.confirmPassword.errors ? 'error' : ''"
+        nzErrorTip="Passwords must match"
       >
         <input
           class="signup-page__input"
@@ -66,21 +75,25 @@
         />
       </nz-form-control>
 
-      <button
-        class="signup-page__controller"
-        nz-button
-        nzType="primary"
-        (click)="onLoginClick()"
-      >
-        Sign up
-      </button>
-      <p *ngIf="error">
-        <nz-alert nzType="error" nzMessage="{{message}}" nzShowIcon></nz-alert>
-      </p>
+      <app-button
+        text="Create Account"
+        type="primary"
+        size="large"
+        [fullWidth]="true"
+        [disabled]="!form.valid"
+        (clicked)="onLoginClick()"
+      ></app-button>
+      
+      <!-- Error and success messages -->
+      <div *ngIf="error" class="message-container">
+        <nz-alert nzType="error" [nzMessage]="message" nzShowIcon></nz-alert>
+      </div>
+      
+      <!-- Navigation links -->
       <div class="signup-page__link">
-        <a routerLink="/login">Log in</a><br>
-        <a routerLink="/recovery">Recover password</a><br>
-        <a routerLink="/">Go to main page</a><br>
+        <p>Already have an account? <a routerLink="/login">Sign in</a></p>
+        <p><a routerLink="/recovery">Forgot password?</a></p>
+        <p><a routerLink="/">Back to home</a></p>
       </div>
     </div>
   </div>

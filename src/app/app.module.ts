@@ -72,7 +72,7 @@ import {ListKitchenwareComponent} from './modules/cocktails/list-kitchenware/lis
 import {ListLabelComponent} from './modules/cocktails/list-label/list-label.component';
 import {RequestsComponent} from "./modules/friends/pages/friends-requests/requests.component";
 import {FriendsComponent} from "./modules/friends/pages/friends/friends.component";
-import {PageNotFoundComponent} from "./modules/core/page-not-found/page-not-found.component";
+import {PageNotFoundComponent} from "./modules/auth/pages/page-not-found/page-not-found.component";
 import {NzResultModule} from "ng-zorro-antd/result";
 import {NzPaginationModule} from "ng-zorro-antd/pagination";
 import {NzSpinModule} from "ng-zorro-antd/spin";

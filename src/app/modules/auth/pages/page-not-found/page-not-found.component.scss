@@ -1,0 +1,95 @@
+.page-not-found {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #5F72BE 0%, #EBD3FB 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.picture {
+  position: absolute;
+  top: 0%;
+  right: -2%;
+  height: 100%;
+  width: 50%;
+  z-index: 1;
+}
+
+.picture img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.page-not-found__container {
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  z-index: 10;
+}
+
+.page-not-found__title {
+  font-size: 8rem;
+  font-weight: 900;
+  color: #9921E8;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-not-found__subtitle {
+  font-size: 1.5rem;
+  color: #495464;
+  margin: 1rem 0 2rem 0;
+  font-weight: 600;
+}
+
+.page-not-found__description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.page-not-found__icon {
+  font-size: 4rem;
+  color: #9921E8;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 768px) {
+  .page-not-found__container {
+    padding: 3rem 2rem;
+    margin: 0 20px;
+  }
+  
+  .picture {
+    display: none;
+  }
+  
+  .page-not-found__title {
+    font-size: 6rem;
+  }
+  
+  .page-not-found__subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .page-not-found__description {
+    font-size: 1rem;
+  }
+}

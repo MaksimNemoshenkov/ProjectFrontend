@@ -1,0 +1,115 @@
+.app-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-family: inherit;
+  color: white; // По умолчанию белый текст
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  // Размеры
+  &--small {
+    padding: 8px 16px;
+    font-size: 14px;
+    height: 36px;
+  }
+  
+  &--medium {
+    padding: 12px 24px;
+    font-size: 16px;
+    height: 44px;
+  }
+  
+  &--large {
+    padding: 16px 32px;
+    font-size: 18px;
+    height: 52px;
+  }
+  
+  // Типы
+  &--primary {
+    background: linear-gradient(135deg, #9921E8 0%, #8B5CF6 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(153, 33, 232, 0.3);
+    
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(153, 33, 232, 0.4);
+    }
+    
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+  
+  &--secondary {
+    background: linear-gradient(135deg, #5F72BE 0%, #EBD3FB 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(95, 114, 190, 0.3);
+    
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(95, 114, 190, 0.4);
+    }
+    
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+  
+  &--outline {
+    background: transparent;
+    color: #9921E8;
+    border: 2px solid #9921E8;
+    
+    &:hover:not(:disabled) {
+      background: #9921E8;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(153, 33, 232, 0.3);
+    }
+    
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+  
+  // Полная ширина
+  &--full-width {
+    width: 100%;
+  }
+  
+  // Состояние disabled
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    
+    &:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  }
+  
+  // Стили для кнопок с пользовательским цветом
+  &[style*="background-color"] {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+  }
+}
